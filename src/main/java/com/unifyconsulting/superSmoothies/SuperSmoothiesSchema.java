@@ -9,7 +9,6 @@ public class SuperSmoothiesSchema {
     private DrinkCatalog catalog;
 
     public SuperSmoothiesSchema(DrinkCatalog catalog) {
-
         this.catalog = catalog;
     }
 
@@ -25,6 +24,5 @@ public class SuperSmoothiesSchema {
     private String categoryOf(String drink) {
         return catalog.getCategoryOf(drink);
     }
-
 
 }

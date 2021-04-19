@@ -1,4 +1,4 @@
-Feature: Super Dough Loyalty Cards
+Feature: Super Freshness Member Loyalty Cards
 
 
   Background:
@@ -31,3 +31,7 @@ Feature: Super Dough Loyalty Cards
     And Jane purchases 6 Earl Gray drinks
     Then she should earn 135 points
 
+Scenario: When Jack orders a single item he earns zero points
+  Given Jack is not a Morning Freshness member
+  When Jack purchases 1 Triple Berry Blend drink
+  Then he should earn 0 points
