@@ -59,16 +59,16 @@ public class SuperSmoothiesSteps {
         customer.sendWelcomeText();
     }
 
-    @Then("a welcome text is sent to (?:him|her)")
+    @Then("^a welcome text is sent to (?:him|her)$")
     public void a_welcome_text_is_sent_to_him() {
         assertThat(customer.getWelcomeTextSent());
     }
 
-    @Given("^s?he provides (?:her|his) email (.*)")
+    @Given("^s?he provides (?:her|his) email (.*)$")
     public void she_provides_her_email(String emailAddress) {
         customer.setEmailAddress(emailAddress);
     }
-    @Then("^a welcome email is sent to (?her|him)$")
+    @Then("^a welcome email is sent to (?:her|him)$")
     public void a_welcome_email_is_sent_to_her() {
         assertThat(customer.getWelcomeEmailSent());
     }
