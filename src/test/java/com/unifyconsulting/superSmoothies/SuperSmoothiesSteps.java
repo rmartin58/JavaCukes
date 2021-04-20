@@ -26,16 +26,14 @@ public class SuperSmoothiesSteps {
         });
     }
 
-    @Given("^(.*) is a Morning Freshness member$")
+    @Given("{string} is a Morning Freshness member")
     public void customer_is_a_morning_freshness_member(String name) {
         customer = new MorningFreshCustomer(name, superSmoothieSchema, true);
     }
 
-    @When("^(.*) purchases (\\d+) (.*) drinks?")
-    public void member_purchases_apple_and_kale_drinks(String name,
-                                                        Integer quantity,
-                                                        String drink) {
 
+    @When("{string} purchases {int} {string} drink(s)")
+    public void member_purchases_apple_and_kale_drinks(String name, Integer quantity, String drink) {
         System.out.println(String.format("### Customer %s is ordering %d %s",name, quantity, drink));
         customer.orders(quantity, drink);
     }
@@ -45,9 +43,33 @@ public class SuperSmoothiesSteps {
         assertThat(customer.getEarnedPoints()).isEqualTo(expectedPoints);
     }
 
-    @Given("^(.*) is not a Morning Freshness member")
+    @Given("{string} is not a Morning Freshness member")
     public void jack_is_not_a_morning_freshness_member(String name) {
         customer = new MorningFreshCustomer(name,superSmoothieSchema, false);
     }
 
+    @When("(s)he enrolls as a member")
+    public void she_enrolls_as_a_member() {
+        customer.enroll();
+    }
+
+    @Given("(s)he provides his cell phone number {string}")
+    public void he_provides_his_cell_phone_number(String phoneNumber) {
+        customer.setPhoneNumber(phoneNumber);
+        customer.sendWelcomeText();
+    }
+
+    @Then("a welcome text is sent to (?:him|her)")
+    public void a_welcome_text_is_sent_to_him() {
+        assertThat(customer.getWelcomeTextSent());
+    }
+
+    @Given("^s?he provides (?:her|his) email (.*)")
+    public void she_provides_her_email(String emailAddress) {
+        customer.setEmailAddress(emailAddress);
+    }
+    @Then("^a welcome email is sent to (?her|him)$")
+    public void a_welcome_email_is_sent_to_her() {
+        assertThat(customer.getWelcomeEmailSent());
+    }
 }
