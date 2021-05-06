@@ -13,7 +13,7 @@ public class SuperSmoothiesSteps {
 
     private final DrinkCatalog drinkCatalog = new DrinkCatalog();
     private final SuperSmoothiesSchema superSmoothieSchema = new SuperSmoothiesSchema(drinkCatalog);
-    private iCustomer customer;
+    private MorningFreshCustomer customer;
 
     @Given("the following drink categories:")
     public void the_following_drink_categories(List<Map<String, String>> drinkCategories) {
@@ -68,6 +68,7 @@ public class SuperSmoothiesSteps {
     public void she_provides_her_email(String emailAddress) {
         customer.setEmailAddress(emailAddress);
     }
+
     @Then("^a welcome email is sent to (?:her|him)$")
     public void a_welcome_email_is_sent_to_her() {
         assertThat(customer.getWelcomeEmailSent());
