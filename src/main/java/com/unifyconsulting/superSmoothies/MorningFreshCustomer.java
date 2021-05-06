@@ -18,7 +18,10 @@ public class MorningFreshCustomer {
 
 
     public void orders(Integer quantity, String drink) {
-        points += schema.getPointsFor(drink) * quantity;
+        if (isRewardsMemeber) {
+            points += schema.getPointsFor(drink) * quantity;
+        }
+
         System.out.println(String.format("### %s just earned %d points",
                 name,
                 points));
@@ -31,7 +34,9 @@ public class MorningFreshCustomer {
     }
 
 
-    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
 
     public void sendWelcomeText() {
@@ -44,7 +49,9 @@ public class MorningFreshCustomer {
     }
 
 
-    public void setEmailAddress(String emailAddress) { this.emailAddress = emailAddress; }
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
 
 
     public boolean getWelcomeEmailSent() {
@@ -53,6 +60,6 @@ public class MorningFreshCustomer {
 
 
     public int getEarnedPoints() {
-        return isRewardsMemeber ? points : 0;
+        return points;
     }
 }

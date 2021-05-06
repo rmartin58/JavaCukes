@@ -38,6 +38,6 @@ Feature: Super Freshness Member Loyalty Cards
 
   Scenario: Anne enrolls as a member while ordering a drink and gets 10 sign-on points
     Given "Anne" is not a Morning Freshness member
-    When "Anne" purchases 1 "Earl Gray" drink
-    And she enrolls as a member
+    When she enrolls as a member
+    And "Anne" purchases 1 "Earl Gray" drink
     Then she should earn 20 points

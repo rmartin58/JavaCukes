@@ -52,25 +52,4 @@ public class SuperSmoothiesSteps {
     public void she_enrolls_as_a_member() {
         customer.enroll();
     }
-
-    @Given("(s)he provides his cell phone number {string}")
-    public void he_provides_his_cell_phone_number(String phoneNumber) {
-        customer.setPhoneNumber(phoneNumber);
-        customer.sendWelcomeText();
-    }
-
-    @Then("^a welcome text is sent to (?:him|her)$")
-    public void a_welcome_text_is_sent_to_him() {
-        assertThat(customer.getWelcomeTextSent());
-    }
-
-    @Given("^s?he provides (?:her|his) email (.*)$")
-    public void she_provides_her_email(String emailAddress) {
-        customer.setEmailAddress(emailAddress);
-    }
-
-    @Then("^a welcome email is sent to (?:her|him)$")
-    public void a_welcome_email_is_sent_to_her() {
-        assertThat(customer.getWelcomeEmailSent());
-    }
 }
